@@ -1,44 +1,59 @@
 // src/Modal.js
-import React from 'react';
+import React, { useEffect } from 'react';
 
 const Modal = ({ show, onClose }) => {
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (event.target.id === 'modal-backdrop') {
+        onClose();
+      }
+    };
+    window.addEventListener('click', handleClickOutside);
+    return () => window.removeEventListener('click', handleClickOutside);
+  }, [onClose]);
+
   if (!show) {
     return null;
   }
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center z-50">
-      <div className="fixed inset-0 bg-gray-600 bg-opacity-50"></div>
-      <div className="bg-white p-8 rounded-lg shadow-lg z-50 w-1/2">
+    <div id="modal-backdrop" className="fixed inset-0 bg-gray-600 bg-opacity-50 flex items-center justify-center overflow-auto z-50">
+      <div className="bg-white p-8 rounded-lg shadow-lg max-w-2xl w-full mx-4 my-8">
         <h2 className="text-2xl mb-4">Create New User</h2>
         <form className="space-y-4">
           <div>
             <label className="block text-sm font-medium text-gray-700">Name</label>
             <input type="text" className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md" />
           </div>
-          <div>
-            <label className="block text-sm font-medium text-gray-700">Designation</label>
-            <input type="text" className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md" />
+          <div className="flex space-x-4">
+            <div className="flex-1">
+              <label className="block text-sm font-medium text-gray-700">Designation</label>
+              <input type="text" className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md" />
+            </div>
+            <div className="flex-1">
+              <label className="block text-sm font-medium text-gray-700">Status</label>
+              <input type="text" className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md" />
+            </div>
           </div>
-          <div>
-            <label className="block text-sm font-medium text-gray-700">Email</label>
-            <input type="email" className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md" />
+          <div className="flex space-x-4">
+            <div className="flex-1">
+              <label className="block text-sm font-medium text-gray-700">Email</label>
+              <input type="email" className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md" />
+            </div>
+            <div className="flex-1">
+              <label className="block text-sm font-medium text-gray-700">Phone Number</label>
+              <input type="tel" className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md" />
+            </div>
           </div>
-          <div>
-            <label className="block text-sm font-medium text-gray-700">Phone Number</label>
-            <input type="tel" className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md" />
-          </div>
-          <div>
-            <label className="block text-sm font-medium text-gray-700">GitHub Link</label>
-            <input type="url" className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md" />
-          </div>
-          <div>
-            <label className="block text-sm font-medium text-gray-700">LinkedIn Link</label>
-            <input type="url" className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md" />
-          </div>
-          <div>
-            <label className="block text-sm font-medium text-gray-700">Status</label>
-            <input type="text" className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md" />
+          <div className="flex space-x-4">
+            <div className="flex-1">
+              <label className="block text-sm font-medium text-gray-700">GitHub Link</label>
+              <input type="url" className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md" />
+            </div>
+            <div className="flex-1">
+              <label className="block text-sm font-medium text-gray-700">LinkedIn Link</label>
+              <input type="url" className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md" />
+            </div>
           </div>
           <div>
             <label className="block text-sm font-medium text-gray-700">Bio</label>
