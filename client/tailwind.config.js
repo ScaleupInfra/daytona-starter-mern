@@ -6,6 +6,9 @@ export default {
   ],
   theme: {
     extend: {
+      boxShadow: {
+        'thin-border': '0 0 0 0.1px #2ECC71',
+      },
     },
   },
   plugins: [],

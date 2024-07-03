@@ -18,7 +18,7 @@ export const  SearchBar = () => {
                 })
             );
         }
-    }, [search])
+    }, [search, userList])
     return  <div className='flex flex-row items-center  px-7 '>
             <input
                 className='w-72 pl-2 bg-[#151515] border-solid border-b-[1px] border-b-gray-400'

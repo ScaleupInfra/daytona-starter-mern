@@ -29,10 +29,10 @@ export const  SideBar = () => {
             <img src={logo} alt="No img" className=' w-18 h-18 rounded-xl my-4' />
             <div className='mb-4'>
                 <div className='text-3xl font-bold'>
-                Directory
+                Daytona CPM
                 </div>
-                <div>
-                    Employ registory for company personal
+                <div className='font-light py-2'>
+                    Tool for enhanced Customer portfolio management
                 </div>
             </div>
         </div>
