@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const CustomerService = require('../service/CustomerService');
+const CustomerService = require('../service/customerService');
 const customerService = new CustomerService();
 
 router.get('/get-all', async (req, res) => {

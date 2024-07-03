@@ -37,6 +37,10 @@ const customerSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    projectStatus:{
+        type: String,
+        required: true,
+    },
     profilePicture: {
         type: String,
         required: true,
