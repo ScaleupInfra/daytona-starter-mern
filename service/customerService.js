@@ -20,6 +20,7 @@ class CustomerService {
             contactDetails: body.contactDetails,
             profiles: body.profiles,
             customerStatus: body.customerStatus,
+            projectStatus: body.projectStatus,
             profilePicture: body.profilePicture,
         });
 
@@ -30,6 +31,7 @@ class CustomerService {
     async updateCustomer(id, body) {
         const existingCustomer = await Customer.findByIdAndUpdate(id, {
             customerStatus: body.customerStatus,
+            projectStatus: body.projectStatus
         });
 
         if (!existingCustomer) {
