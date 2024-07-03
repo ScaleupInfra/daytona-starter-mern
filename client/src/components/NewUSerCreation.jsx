@@ -1,4 +1,3 @@
-// src/NewUser.js
 import React, { useState } from 'react';
 import Modal from './Modal';
 
@@ -14,15 +13,15 @@ export const NewUser = () => {
     };
   
     return (
-      <>
+      <div>
         <button 
-          className="bg-blue-500 text-white px-4 py-2 rounded-md"
+          className="bg-[#151515] text-white px-4 py-2 rounded-md w-full text-center"
           onClick={handleOpenModal}
         >
           Create New User
         </button>
         <Modal show={showModal} onClose={handleCloseModal} />
-      </>
+      </div>
     );
 };
 
