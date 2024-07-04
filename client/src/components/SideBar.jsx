@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 import SearchBar from './SearchBar';
 import NewUser from './newuser/NewUserCreation';
 import UserCard from './user/UserCard';
-import logo from "../../public/assets/logo.png"
+import logo from "../../src/assets/logo.png"
 import axios from 'axios';
 const  SideBar = () => {
     const [userList, setUserList] = useRecoilState(userData);
@@ -13,7 +13,7 @@ const  SideBar = () => {
         const fetchData = async () => {
             try {
                 // const response = await axios.get(`${process.env.BACKEND_URL}`);
-                const response = await axios.get("http://localhost:8000/api/customers/get-all");
+                const response = await axios.get("http://localhost:8000/api/customers/");
                 if (response.status === 200) {
                 setUserList(response.data);
                 setFilteredData(userList);

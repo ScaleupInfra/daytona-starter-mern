@@ -1,4 +1,4 @@
-import logo from '../../public/assets/logo.png'
+import logo from '../../src/assets/logo.png'
 
 const  TopBar = () => {
     return <div className={'flex fles-row items-center ml-10 mb-4'}>

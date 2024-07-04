@@ -1,5 +1,5 @@
 import { atom } from 'recoil';
-import initialData from '../public/data/userDummyData';
+import initialData from '../data/userDummyData';
 
 export const userData = atom({
     key: 'userData',
