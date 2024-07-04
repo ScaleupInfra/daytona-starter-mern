@@ -1,6 +1,6 @@
 import { useRecoilState } from 'recoil';
-import { showModalState } from '../state';
-import Modal from './Modal';
+import { showModalState } from '../../state';
+import UserForm from './NewUserForm';
 
 export const NewUser = () => {
     const [showModal, setShowModal] = useRecoilState(showModalState);
@@ -16,7 +16,7 @@ export const NewUser = () => {
         >
           Create New User
         </button>
-        <Modal/>
+        <UserForm/>
       </div>
     );
 };

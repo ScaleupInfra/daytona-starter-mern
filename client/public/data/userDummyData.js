@@ -1,18 +1,5 @@
 const initialData = [
     {
-      name: "John Doe",
-      designation: "Software Engineer",
-      companyUid: "JD123",
-      github: "https://github.com/johndoe",
-      linkedin: "https://linkedin.com/in/johndoe",
-      bio: "John Doe is a seasoned Software Engineer with over 8 years of experience in designing and developing robust and scalable applications. He has a strong passion for solving complex problems and optimizing performance. Throughout his career, John has worked on a variety of projects across different domains, from fintech to e-commerce, gaining expertise in full-stack development and cloud technologies. He is proficient in JavaScript, Python, and Java, and has a deep understanding of modern frameworks like React and Node.js. John is dedicated to continuous learning and enjoys contributing to open-source projects.",
-      email: "john.doe@example.com",
-      mobile: "+1 123 456 7890",
-      clientStatus: "Deliverables Assigned",
-      projectStatus: "Deliverables Assigned",
-      pic: "../profilepics/man1.png"
-    },
-    {
       name: "Jane Smith",
       designation: "Product Manager",
       companyUid: "JS456",
@@ -23,7 +10,7 @@ const initialData = [
       mobile: "+1 234 567 8901",
       clientStatus: "Payment Pending",
       projectStatus: "Payment Pending",
-      pic: "../profilepics/woman1.png"
+      pic: "../profilepics/person1.png"
     },
     {
       name: "Alice Johnson",
@@ -36,7 +23,7 @@ const initialData = [
       mobile: "+1 345 678 9012",
       clientStatus: "Work Agreement Signed",
       projectStatus: "Work Agreement Signed",
-      pic: "../profilepics/woman2.png"
+      pic: "../profilepics/person2.png"
     },
     {
       name: "Michael Brown",
@@ -49,7 +36,7 @@ const initialData = [
       mobile: "+1 456 789 0123",
       clientStatus: "Payment Recieved",
       projectStatus: "Payment Recieved",
-      pic: "../profilepics/man2.png"
+      pic: "../profilepics/person5.png"
     },
     {
       name: "Sarah Lee",
@@ -62,20 +49,7 @@ const initialData = [
       mobile: "+1 567 890 1234",
       clientStatus: "Deliverables Completed",
       projectStatus: "Deliverables Completed",
-      pic: "../profilepics/woman3.png"
-    },
-    {
-      name: "David Wilson",
-      designation: "Financial Analyst",
-      companyUid: "DW789",
-      github: "https://github.com/davidwilson",
-      linkedin: "https://linkedin.com/in/davidwilson",
-      bio: "David Wilson is a detail-oriented Financial Analyst with a strong background in analyzing financial data and providing strategic insights for decision-making. With experience in financial modeling, forecasting, and risk assessment, David has supported senior management in making informed business decisions and optimizing financial performance. He has worked in diverse industries, including banking and consulting, where he developed expertise in financial reporting standards and regulatory compliance. David is committed to accuracy and thoroughness in financial analysis, ensuring stakeholders have reliable information for effective decision-making.",
-      email: "david.wilson@example.com",
-      mobile: "+1 678 901 2345",
-      clientStatus: "Meeting Scheduled",
-      projectStatus: "Meeting Scheduled",
-      pic: "../profilepics/man3.png"
+      pic: "../profilepics/person3.png"
     },
     {
       name: "Emily Taylor",
@@ -88,60 +62,9 @@ const initialData = [
       mobile: "+1 789 012 3456",
       clientStatus: "Deliverables Assigned",
       projectStatus: "Deliverables Assigned",
-      pic: "../profilepics/woman4.png"
+      pic: "../profilepics/person4.png"
     },
-    {
-      name: "Robert Johnson",
-      designation: "Data Engineer",
-      companyUid: "RJ456",
-      github: "https://github.com/robertjohnson",
-      linkedin: "https://linkedin.com/in/robertjohnson",
-      bio: "Robert Johnson is a skilled Data Engineer specializing in designing and implementing data pipelines. With a background in computer engineering and hands-on experience in data warehousing and ETL processes, Robert excels in transforming raw data into valuable insights for business decision-making. He is proficient in tools like Apache Spark, Hadoop, and SQL databases, and has a deep understanding of data modeling and optimization techniques. Robert is passionate about data-driven solutions and enjoys collaborating with cross-functional teams to deliver impactful data projects.",
-      email: "robert.johnson@example.com",
-      mobile: "+1 890 123 4567",
-      clientStatus: "Payment Pending",
-      projectStatus: "Payment Pending",
-      pic: "../profilepics/man4.png"
-    },
-    {
-      name: "Sophia Clark",
-      designation: "UI/UX Designer",
-      companyUid: "SC789",
-      github: "https://github.com/sophiaclark",
-      linkedin: "https://linkedin.com/in/sophiaclark",
-      bio: "Sophia Clark is a seasoned UI/UX Designer with a passion for creating user-centric designs that elevate digital experiences. With extensive experience in interface design, prototyping, and usability testing, Sophia has led design projects from concept to implementation across various industries. She is skilled in Adobe Creative Suite, Sketch, and Figma, and has a keen eye for detail and aesthetics. Sophia stays updated with design trends and user behavior insights to deliver intuitive and visually appealing designs that meet user needs and business objectives.",
-      email: "sophia.clark@example.com",
-      mobile: "+1 901 234 5678",
-      clientStatus: "Payment Recieved",
-      projectStatus: "Payment Recieved",
-      pic: "../profilepics/woman5.png"
-    },
-    {
-      name: "Daniel Brown",
-      designation: "Product Manager",
-      companyUid: "DB123",
-      github: "https://github.com/danielbrown",
-      linkedin: "https://linkedin.com/in/danielbrown",
-      bio: "Daniel Brown is a strategic Product Manager with a passion for driving product development and innovation. With a background in engineering and business administration, Daniel excels in defining product roadmaps and leading cross-functional teams to deliver market-leading products. He brings a wealth of experience from his roles in tech startups and Fortune 500 companies, where he successfully launched and scaled products that address customer pain points and drive revenue growth. Daniel is known for his entrepreneurial mindset, analytical skills, and ability to align product strategies with business objectives.",
-      email: "daniel.brown@example.com",
-      mobile: "+1 012 345 6789",
-      clientStatus: "Work Agreement Signed",
-      projectStatus: "Work Agreement Signed",
-      pic: "../profilepics/man5.png"
-    },
-    {
-      name: "Jessica White",
-      designation: "Marketing Specialist",
-      companyUid: "JW456",
-      github: "https://github.com/jessicawhite",
-      linkedin: "https://linkedin.com/in/jessicawhite",
-      bio: "Jessica White is a results-driven Marketing Specialist with expertise in executing digital marketing campaigns that drive brand awareness and customer engagement. With a background in marketing communications and a passion for storytelling, Jessica excels in creating compelling content and optimizing digital channels to reach target audiences effectively. She brings experience from her roles in digital agencies and corporate marketing teams, where she has successfully managed campaigns across social media, email marketing, and paid advertising platforms. Jessica is committed to delivering measurable results and continuous learning in the dynamic field of digital marketing.",
-      email: "jessica.white@example.com",
-      mobile: "+1 123 456 7890",
-      clientStatus: "Meeting Scheduled",
-      projectStatus: "Meeting Scheduled",
-      pic: "../profilepics/woman6.png"
-    }
+    
   ];
 
   export default initialData;

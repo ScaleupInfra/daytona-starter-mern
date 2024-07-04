@@ -1,7 +1,7 @@
 import './App.css'
-import  UserProfile  from './components/UserProfile';
+import  UserProfile  from './components/user/UserProfile';
 import TopBar from './components/TopBar'
-import  UserDesc  from './components/UserDesc';
+import  UserDesc  from './components/user/UserDesc';
 import SideBar from './components/SideBar'
 
 function App() {

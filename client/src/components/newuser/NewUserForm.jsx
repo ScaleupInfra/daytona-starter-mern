@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import { useRecoilState } from 'recoil';
-import { showModalState } from '../state';
+import { showModalState } from '../../state';
 import axios from 'axios';
 
-const Modal = () => {
+const UserForm = () => {
   const [newUser, setNewUser] = useState({});
   const [showModal, setShowModal] = useRecoilState(showModalState);
   const [base64String, setBase64String] = useState({});
@@ -226,4 +226,4 @@ const Modal = () => {
   );
 };
 
-export default Modal;
+export default UserForm;

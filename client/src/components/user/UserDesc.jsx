@@ -1,7 +1,7 @@
 import { useRecoilValue } from "recoil";
-import { currentEmployeeState, userData } from "../state";
-import ClientStatus from "./ClientStatus";
-import ProjectStatus from "./ProjectStatus";
+import { currentEmployeeState, userData } from "../../state";
+import ClientStatus from "../status/ClientStatus";
+import ProjectStatus from "../status/ProjectStatus";
 
 const  UserDesc = () => {
     const currentEmployee = useRecoilValue(currentEmployeeState);

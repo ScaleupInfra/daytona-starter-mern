@@ -2,8 +2,8 @@ import { useRecoilState } from 'recoil';
 import { userData, filteredUserData } from '../state';
 import { useEffect } from 'react';
 import SearchBar from './SearchBar';
-import NewUser from './NewUSerCreation';
-import UserCard from './UserCard';
+import NewUser from './newuser/NewUserCreation';
+import UserCard from './user/UserCard';
 import logo from "../../public/assets/logo.png"
 import axios from 'axios';
 const  SideBar = () => {

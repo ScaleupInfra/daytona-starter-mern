@@ -1,6 +1,6 @@
 import { useRecoilValue } from "recoil";
-import { currentEmployeeState } from "../state";
-import sample from '../../public/assets/sample-profile.jpg';
+import { currentEmployeeState } from "../../state";
+import sample from '../../../public/assets/sample-profile.jpg';
 import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
 import { MdPhone} from 'react-icons/md';
 

@@ -1,6 +1,6 @@
 import React from 'react';
-import sample from '../../public/assets/sample-profile.jpg';
-import { currentEmployeeState, userData } from '../state';
+import sample from '../../../public/assets/sample-profile.jpg';
+import { currentEmployeeState, userData } from '../../state';
 import { useRecoilState } from 'recoil';
 import { FaTimes } from 'react-icons/fa';
 
