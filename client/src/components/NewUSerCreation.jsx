@@ -1,17 +1,13 @@
-import React, { useState } from 'react';
+import { useRecoilState } from 'recoil';
+import { showModalState } from '../state';
 import Modal from './Modal';
 
 export const NewUser = () => {
-    const [showModal, setShowModal] = useState(false);
+    const [showModal, setShowModal] = useRecoilState(showModalState);
 
     const handleOpenModal = () => {
       setShowModal(true);
     };
-  
-    const handleCloseModal = () => {
-      setShowModal(false);
-    };
-  
     return (
       <div>
         <button 
@@ -20,8 +16,9 @@ export const NewUser = () => {
         >
           Create New User
         </button>
-        <Modal show={showModal} onClose={handleCloseModal} />
+        <Modal/>
       </div>
     );
 };
 
+export default NewUser;
