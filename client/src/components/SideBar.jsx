@@ -8,12 +8,13 @@ import logo from "../../src/assets/logo.png";
 import axios from 'axios';
 
 const SideBar = () => {
+    const BASE_URL = import.meta.env.VITE_BACKEND_URL;
     const [userList, setUserList] = useRecoilState(userData);
     const [filteredData, setFilteredData] = useRecoilState(filteredUserData);
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get("http://localhost:8000/api/customers/");
+                const response = await axios.get(BASE_URL);
                 if (response.status === 200) {
                     const updatedData = response.data.customers.map((el) => {
                         return {

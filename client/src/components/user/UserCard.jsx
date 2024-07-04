@@ -7,6 +7,7 @@ import { FaTimes } from 'react-icons/fa';
 import axios from 'axios';
 
 const UserCard = ({ name, id, profilePicture }) => {
+  const BASE_URL = import.meta.env.VITE_BACKEND_URL;
   const [userList, setUserList] = useRecoilState(userData);
   const [currentEmployee, setCurrentEmployee] = useRecoilState(currentEmployeeState);
 
@@ -17,11 +18,11 @@ const UserCard = ({ name, id, profilePicture }) => {
 
   const handleDelete = async (_id) => {
     try {
-      const response = await axios.delete(`http://localhost:8000/api/customers/${_id}`);
+      const response = await axios.delete(`${BASE_URL}${_id}`);
       console.log(response);
       if (response.status === 200) {
-        const response2 = await axios.get("http://localhost:8000/api/customers/");
-        if (response2.status === 200 && Array.isArray(response2.data.customers)) {
+        const response2 = await axios.get(BASE_URL);
+        if (response2.status === 200) {
           const updatedData = response2.data.customers.map((el) => ({
             ...el,
             contactDetails: {

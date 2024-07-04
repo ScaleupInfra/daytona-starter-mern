@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { TiArrowSortedDown } from "react-icons/ti";
 import { AiOutlineSearch } from "react-icons/ai";
 import { useRecoilState } from "recoil";
@@ -7,15 +7,22 @@ import { FaCheckCircle } from 'react-icons/fa';
 import clientStatusData from '../../../data/clientStatusData'
 import axios from 'axios';
 const ClientStatus = () => {
+  const BASE_URL = import.meta.env.VITE_BACKEND_URL;
   const [clientStatusList, setClientStatusList] = useState(clientStatusData);
   const [inputValue, setInputValue] = useState("");
   const [open, setOpen] = useState(false);
   const [currentEmployee, setCurrentEmployee] = useRecoilState(currentEmployeeState)
-  
+  useEffect(()=>{
+    setOpen(false);
+  },[currentEmployee]);
   const handleClientStatusChange = async (newStatus) => {
     try {
       const updatedEmployee = { ...currentEmployee, customerStatus: newStatus };
-      const response = await axios.patch(`http://localhost:8000/api/customers/${updatedEmployee._id}`, updatedEmployee);
+      if(currentEmployee._id.length <= 5) {
+        setCurrentEmployee(updatedEmployee);
+        return;
+      }
+      const response = await axios.patch(`${BASE_URL}${updatedEmployee._id}`, updatedEmployee);
       if(response.status == 200){
         setCurrentEmployee(updatedEmployee);
         console.log("Customer status updated successfully");
@@ -28,7 +35,7 @@ const ClientStatus = () => {
   };
 
   return (
-    <div className="w-1/2 font-medium pr-8">
+    <div className="w-1/4 font-medium pr-8">
       <div className="text-3xl font-bold my-6">
         Client Status
       </div>
@@ -71,7 +78,9 @@ const ClientStatus = () => {
                 }`}
               onClick={() => {
                 if (clientStatus?.toLowerCase() !== currentEmployee.customerStatus.toLowerCase()) {
+                  console.log("alpha");
                   handleClientStatusChange(clientStatus);
+                  console.log("beta");
                   setOpen(false);
                   setInputValue("");
                 }

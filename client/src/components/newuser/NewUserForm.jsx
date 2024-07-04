@@ -5,45 +5,46 @@ import axios from 'axios';
 
 
 const UserForm = () => {
+  const BASE_URL = import.meta.env.VITE_BACKEND_URL;
   const [newUser, setNewUser] = useState({});
   const [userList, setUserList] = useRecoilState(userData);
   const [showModal, setShowModal] = useRecoilState(showModalState);
   const [base64String, setBase64String] = useState({});
   const checkNewUser = (newUser) => {
     if (!newUser || !newUser.name || newUser.name.length === 0) {
-      alert("Please enter the name");
+      alert("please fill all the feilds");
       return false;
     }
     if (!newUser.designation || newUser.designation.length === 0) {
-      alert("Please enter the designation");
+      alert("please fill all the feilds");
       return false;
     }
     if (!newUser.profiles || !newUser.profiles.github || newUser.profiles.github.length === 0) {
-      alert("Please enter the GitHub profile");
+      alert("please fill all the feilds");
       return false;
     }
     if (!newUser.profiles || !newUser.profiles.linkedIn || newUser.profiles.linkedIn.length === 0) {
-      alert("Please enter the LinkedIn profile");
+      alert("please fill all the feilds");
       return false;
     }
     if (!newUser.bio || newUser.bio.length === 0) {
-      alert("Please enter the bio");
+      alert("please fill all the feilds");
       return false;
     }
     if (!newUser.contactDetails || !newUser.contactDetails.email || newUser.contactDetails.email.length === 0) {
-      alert("Please enter the email");
+      alert("please fill all the feilds");
       return false;
     }
     if (!newUser.contactDetails || !newUser.contactDetails.phone) {
-      alert("Please enter the mobile number");
+      alert("please fill all the feilds");
       return false;
     }
     if (!newUser.customerStatus || newUser.customerStatus.length === 0) {
-      alert("Please enter the client status");
+      alert("please fill all the feilds");
       return false;
     }
     if (!newUser.projectStatus || newUser.projectStatus.length === 0) {
-      alert("Please enter the project status");
+      alert("please fill all the feilds");
       return false;
     }
     return true;
@@ -228,12 +229,13 @@ const UserForm = () => {
             <button
               onClick={async () => {
                 if(checkNewUser(newUser) == false) return;
+                console.log(newUser);
                 setShowModal(false);
-                const response = await axios.post('http://localhost:8000/api/customers/', newUser);
+                const response = await axios.post(BASE_URL, newUser);
                 console.log(response);
                 if(response.status == 201){
                   try {
-                    const response2 = await axios.get("http://localhost:8000/api/customers/");
+                    const response2 = await axios.get(BASE_URL);
                     if (response2.status === 200) {
                       const updatedData = response2.data.customers.map((el) => {
                         return {
