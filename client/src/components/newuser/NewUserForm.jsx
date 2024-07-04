@@ -51,7 +51,7 @@ const UserForm = () => {
   };
 
   return (
-    <div id="modal-backdrop" className="fixed inset-0 bg-opacity-0 flex items-center justify-center z-50">
+    <div id="modal-backdrop" className=" fixed inset-0 flex items-center justify-center backdrop-blur-sm">
       <div className="bg-[#151515] p-8 rounded-lg shadow-lg max-w-2xl w-full mx-4 my-8 border-solid border-[#2ECC71] border-[1px]">
         <h2 className="text-2xl mb-4">Create New User</h2>
         <div className="space-y-4">

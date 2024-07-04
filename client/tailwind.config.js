@@ -9,8 +9,12 @@ export default {
       boxShadow: {
         'thin-border': '0 0 0 0.1px #2ECC71',
       },
+      filter:{
+        "bg-blur" : "blur(8px)" 
+      },
     },
   },
-  plugins: [],
+  plugins: [
+  ],
 }
 

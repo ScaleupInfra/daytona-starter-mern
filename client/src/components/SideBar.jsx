@@ -2,7 +2,7 @@ import { useRecoilState } from 'recoil';
 import { userData, filteredUserData } from '../state';
 import { useEffect } from 'react';
 import SearchBar from './SearchBar';
-import NewUser from './newuser/NewUserCreation';
+import NewUser from './newUser/NewUserCreation';
 import UserCard from './user/UserCard';
 import logo from "../../public/assets/logo.png"
 import axios from 'axios';
