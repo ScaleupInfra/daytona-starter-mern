@@ -2,7 +2,7 @@ import { useRecoilState } from 'recoil';
 import { userData, filteredUserData } from '../state';
 import { useEffect } from 'react';
 import { SearchBar } from './SearchBar';
-import { NewUser } from './NewUSerCreation';
+import { NewUser } from './NewUserCreation';
 import { UserCard } from './UserCard';
 import logo from '../assets/logo.png'
 export const  SideBar = () => {
@@ -11,7 +11,7 @@ export const  SideBar = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get(process.env.BACKEND_URL);
+                const response = await axios.get("http://localhost:8000/api/customers/get-all");
                 if (response.status === 200) {
                 setUserList(response.data);
                 setFilteredData(userList);

@@ -3,7 +3,7 @@ const router = express.Router();
 const CustomerService = require('../service/customerService');
 const customerService = new CustomerService();
 
-router.get('/get-all', async (req, res) => {
+router.get('/', async (req, res) => {
     try {
         const allCustomers = await customerService.getAllCustomers();
         if(!allCustomers || allCustomers.length === 0){
@@ -12,11 +12,11 @@ router.get('/get-all', async (req, res) => {
         res.status(200).json({ customers: allCustomers });
     } catch (error) {
         console.error(error);
-        res.status(500).json({ message: "Internal servser error!" });
+        res.status(500).json({ message: "Internal server error!" });
     }
 });
 
-router.get('/get-one/:id', async (req, res) => {
+router.get('/:id', async (req, res) => {
     try {
         const customer = await customerService.getAllCustomer(req.params.id);
         if(!customer){
@@ -29,36 +29,36 @@ router.get('/get-one/:id', async (req, res) => {
     }
 });
 
-router.post('/add-one', async (req, res) => {
+router.post('/', async (req, res) => {
     try {
-        const result = await customerService.addCustomer(req.body);
-        if(result){
-            return res.status(200).json({ message: "Customer added successfully!" });
+        const newCustomer = await customerService.addCustomer(req.body);
+        if (newCustomer) {
+            return res.status(201).json({ message: "Customer added successfully!", customerId: newCustomer._id });
         }
-        res.status(400).json({ message: "Customer already exists!" });
+        res.status(409).json({ message: "Customer already exists!" });
     } catch (error) {
         console.error(error);
         res.status(500).json({ message: "Internal server error!" });
     }
 });
 
-router.patch('/update-one/:id', async (req, res) => {
+router.patch('/:id', async (req, res) => {
     try {
-        const existingCustomer = await customerService.updateCustomer(req.params.id, req.body);
-        if(!existingCustomer){
+        const updatedCustomer = await customerService.updateCustomer(req.params.id, req.body);
+        if (!updatedCustomer) {
             return res.status(404).json({ message: "Customer not found!" });
         }
-        res.status(200).json({ message: "Customer updated successfully!" });
+        res.status(200).json({ message: "Customer updated successfully!", customer: updatedCustomer });
     } catch (error) {
         console.error(error);
         res.status(500).json({ message: "Internal server error!" });
     }
 });
 
-router.delete('/delete-one/:id', async(req, res) => {
+router.delete('/:id', async (req, res) => {
     try {
-        const existingCustomer = await customerService.deleteCustomer(req.params.id);
-        if(!existingCustomer){
+        const deletedCustomer = await customerService.deleteCustomer(req.params.id);
+        if (!deletedCustomer) {
             return res.status(404).json({ message: "Customer not found!" });
         }
         res.status(200).json({ message: "Customer deleted successfully!" });
