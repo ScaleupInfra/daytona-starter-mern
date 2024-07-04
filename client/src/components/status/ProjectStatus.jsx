@@ -5,6 +5,7 @@ import { useRecoilState } from "recoil";
 import { currentEmployeeState } from "../../state";
 import { FaCheckCircle } from 'react-icons/fa';
 import projectStatusData from "../../../data/projectStatusData";
+import axios from 'axios';
 
 const ProjectStatus = () => {
   const [ProjectStatusList, setProjectStatusList] = useState(projectStatusData);
@@ -12,6 +13,28 @@ const ProjectStatus = () => {
   const [selected, setSelected] = useState("");
   const [open, setOpen] = useState(false);
   const [currentEmployee, setCurrentEmployee] = useRecoilState(currentEmployeeState)
+
+  const handleProjectStatusChange = async (newStatus) => {
+    try {
+      const updatedEmployee = { ...currentEmployee, projectStatus: newStatus };
+      setCurrentEmployee(updatedEmployee);
+      setSelected(newStatus);
+      setOpen(false);
+      setInputValue("");
+
+      // Make PATCH request to update backend
+      const response = await axios.patch(`http://localhost:8000/api/customers/${currentEmployee._id}`, {
+        customerStatus: currentEmployee.customerStatus,
+        projectStatus: newStatus
+      });
+      if(response.status == 200)
+        console.log("project status updated successfully");
+      else 
+        console.error("Failed to update project status", error);
+    } catch (error) {
+      console.error("Failed to update project status", error);
+    }
+  };
 
   return (
     <div className="w-full font-medium">
@@ -59,7 +82,7 @@ const ProjectStatus = () => {
               onClick={() => {
                 if (projectStatus?.toLowerCase() !== selected?.toLowerCase()) {
                   setSelected(projectStatus);
-                  setCurrentEmployee({...currentEmployee, projectStatus:selected});
+                  handleProjectStatusChange(projectStatus);
                   setOpen(false);
                   setInputValue("");
                 }

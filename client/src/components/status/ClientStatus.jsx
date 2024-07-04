@@ -5,12 +5,35 @@ import { useRecoilState, useRecoilValue } from "recoil";
 import { currentEmployeeState } from "../../state";
 import { FaCheckCircle } from 'react-icons/fa';
 import clientStatusData from '../../../data/clientStatusData'
+import axios from 'axios';
+import ProjectStatus from "./ProjectStatus";
 const ClientStatus = () => {
   const [currentEmployee, setCurrentEmployee] = useRecoilState(currentEmployeeState)
   const [inputValue, setInputValue] = useState("");
   const [selected, setSelected] = useState("");
   const [open, setOpen] = useState(false);
   const [clientStatusList, setClientStatusList] = useState(clientStatusData);
+  
+  const handleStatusChange = async (newStatus) => {
+    try {
+      const updatedEmployee = { ...currentEmployee, customerStatus: newStatus };
+      setCurrentEmployee(updatedEmployee);
+      setSelected(newStatus);
+      setOpen(false);
+      setInputValue("");
+
+      const response = await axios.patch(`http://localhost:8000/api/customers/${currentEmployee._id}`, {
+        customerStatus: newStatus,
+        ProjectStatus: currentEmployee.projectStatus
+      });
+      if(response.status == 200)
+        console.log("Customer status updated successfully");
+      else 
+        console.error("Failed to update customer status", error);
+    } catch (error) {
+      console.error("Failed to update customer status", error);
+    }
+  };
 
   return (
     <div className="w-full font-medium">
@@ -57,7 +80,7 @@ const ClientStatus = () => {
               onClick={() => {
                 if (clientStatus?.toLowerCase() !== selected?.toLowerCase()) {
                   setSelected(clientStatus);
-                  setCurrentEmployee({...currentEmployee, customerStatus:selected});
+                  handleStatusChange(clientStatus);
                   setOpen(false);
                   setInputValue("");
                 }

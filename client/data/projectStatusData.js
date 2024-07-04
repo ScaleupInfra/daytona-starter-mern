@@ -1,9 +1,10 @@
 const projectStatusData = [
-    "Work Agreement Signed",
-    "Deliverables Assigned",
-    "Deliverables Completed",
-    "Payment Pending",
-    "Payment Recieved",
+    "Project Assigned",
+    "In review client side",
+    "In review vendor side",
+    "Delivered",
   ];
 
 export default projectStatusData;
+
+
