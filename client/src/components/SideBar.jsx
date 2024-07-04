@@ -25,7 +25,10 @@ const SideBar = () => {
                             }
                         };
                     });
-                    const concatenatedData = [...userList, ...updatedData];
+                    const prevdata = userList.filter((obj)=>{
+                        return obj._id.length <= 5;
+                    })
+                    const concatenatedData = [...prevdata, ...updatedData];
                     setUserList(concatenatedData);
                     setFilteredData(concatenatedData);
                     setCurrentEmployee(concatenatedData[0]);

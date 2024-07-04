@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react';
 import { useRecoilState } from 'recoil';
-import { showModalState } from '../../state';
+import { showModalState, userData } from '../../state';
 import axios from 'axios';
 
 const UserForm = () => {
   const [newUser, setNewUser] = useState({});
+  const [userList, setUserList] = useRecoilState(userData);
   const [showModal, setShowModal] = useRecoilState(showModalState);
   const [base64String, setBase64String] = useState({});
 
@@ -188,12 +189,36 @@ const UserForm = () => {
           <div className="flex justify-end space-x-4">
             <button
               onClick={async () => {
+                setShowModal(false);
                 const response = await axios.post('http://localhost:8000/api/customers/', newUser);
+                try {
+                  const response = await axios.get("http://localhost:8000/api/customers/");
+                  if (response.status === 200 && Array.isArray(response.data.customers)) {
+                      const updatedData = response.data.customers.map((el) => {
+                          return {
+                              ...el,
+                              contactDetails: {
+                                  ...el.contactDetails,
+                                  phone: el.contactDetails.phone.toString()
+                              }
+                          };
+                      });
+                      const prevdata = userList.filter((obj)=>{
+                          return obj._id.length <= 5;
+                      })
+                      const concatenatedData = [...prevdata, ...updatedData];
+                      setUserList(concatenatedData);
+                  } else {
+                      console.error('Error: Response data is not an array');
+                  }
+              }catch (error) {
+                  console.error('Error fetching data:', error);
+              }
                 console.log(newUser);
                 console.log(response)
-                // if(response.status === 201){
-                // }
-                setShowModal(false);
+                if(response.status === 201){
+
+                }
                 setNewUser({})
               }}
               required
