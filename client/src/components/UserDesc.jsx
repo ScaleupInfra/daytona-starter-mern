@@ -1,8 +1,9 @@
 import { useRecoilValue } from "recoil";
 import { currentEmployeeState, userData } from "../state";
 import ClientStatus from "./ClientStatus";
+import ProjectStatus from "./ProjectStatus";
 
-export const  UserDesc = () => {
+const  UserDesc = () => {
     const currentEmployee = useRecoilValue(currentEmployeeState);
     return <div className="bg-[#151515] flex flex-col mx-6 p-4 rounded-2xl border-solid border-l-8 border-l-green-600 my-8 gap-y-4">
         <div className="mx-4 pb-8">
@@ -14,8 +15,11 @@ export const  UserDesc = () => {
             </div>
             <div className="">
                 <ClientStatus/>
+                <ProjectStatus/>
             </div>
         </div>
         
     </div>
 }
+
+export default UserDesc;

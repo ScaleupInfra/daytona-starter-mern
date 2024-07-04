@@ -1,17 +1,19 @@
 import { useRecoilState } from 'recoil';
 import { userData, filteredUserData } from '../state';
 import { useEffect } from 'react';
-import { SearchBar } from './SearchBar';
-import { NewUser } from './NewUSerCreation';
-import { UserCard } from './UserCard';
-import logo from '../assets/logo.png'
-export const  SideBar = () => {
+import SearchBar from './SearchBar';
+import NewUser from './NewUSerCreation';
+import UserCard from './UserCard';
+import logo from "../../public/assets/logo.png"
+import axios from 'axios';
+const  SideBar = () => {
     const [userList, setUserList] = useRecoilState(userData);
     const [filteredData, setFilteredData] = useRecoilState(filteredUserData);
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get(process.env.BACKEND_URL);
+                // const response = await axios.get(`${process.env.BACKEND_URL}`);
+                const response = await axios.get("http://localhost:8000/api/customers/get-all");
                 if (response.status === 200) {
                 setUserList(response.data);
                 setFilteredData(userList);
@@ -29,10 +31,10 @@ export const  SideBar = () => {
             <img src={logo} alt="No img" className=' w-18 h-18 rounded-xl my-4' />
             <div className='mb-4'>
                 <div className='text-3xl font-bold'>
-                Daytona CPM
+                Daytona CRM
                 </div>
                 <div className='font-light py-2'>
-                    Tool for enhanced Customer portfolio management
+                    Tool for enhanced creator relationship management
                 </div>
             </div>
         </div>
@@ -45,3 +47,5 @@ export const  SideBar = () => {
         <NewUser/>
     </div>
 }
+
+export default SideBar;

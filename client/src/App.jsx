@@ -1,6 +1,8 @@
 import './App.css'
-import { UserProfile } from './components/UserProfile';
-import {TopBar, SideBar, UserCard, UserDesc} from './components/index.'
+import  UserProfile  from './components/UserProfile';
+import TopBar from './components/TopBar'
+import  UserDesc  from './components/UserDesc';
+import SideBar from './components/SideBar'
 
 function App() {
   

@@ -1,10 +1,10 @@
 import { useRecoilValue } from "recoil";
 import { currentEmployeeState } from "../state";
-import sample from '../assets/sample-profile.jpg';
+import sample from '../../public/assets/sample-profile.jpg';
 import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
 import { MdPhone} from 'react-icons/md';
 
-export const UserProfile = () => {
+const UserProfile = () => {
     const currentEmployee = useRecoilValue(currentEmployeeState)
 
     return <div className="bg-[#151515] flex flex-row mx-6 p-6 rounded-2xl border-solid border-l-8 border-l-green-600">
@@ -44,9 +44,9 @@ export const UserProfile = () => {
                         <div className="ml-1">LinkedIn</div>
                     </button>
                 </a>
-            </div>
-                
-            </div>
-        
+            </div>   
+        </div>
     </div>
 };
+
+export default UserProfile;

@@ -1,10 +1,10 @@
 import React from 'react';
-import sample from '../assets/sample-profile.jpg';
+import sample from '../../public/assets/sample-profile.jpg';
 import { currentEmployeeState, userData } from '../state';
 import { useRecoilState } from 'recoil';
 import { FaTimes } from 'react-icons/fa';
 
-export const UserCard = ({name, id, pic}) => {
+const UserCard = ({name, id, pic}) => {
   const [userList, setUserList] = useRecoilState(userData);
   const [currentEmployee, setCurrentEmployee] = useRecoilState(currentEmployeeState);
   const handleClick = () => {
@@ -36,10 +36,11 @@ export const UserCard = ({name, id, pic}) => {
         <p className='font-bold'>{name}</p>
       </div>
     </div>
-      <div className=' absolute top-0 right-0 px-2 pb-1 pt-2 cursor-pointer hover:text-lg hover:text-[#2ECC71]' onClick={handleCancle}>
+      <div className=' absolute top-0 right-0 px-5 pb-1 pt-3 cursor-pointer hover:text-lg hover:text-[#2ECC71]' onClick={handleCancle}>
         <FaTimes/>
       </div>
     </div>
   )
 }
 
+export default UserCard;
