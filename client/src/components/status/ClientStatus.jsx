@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { BiChevronDown } from "react-icons/bi";
+import { TiArrowSortedDown } from "react-icons/ti";
 import { AiOutlineSearch } from "react-icons/ai";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { currentEmployeeState } from "../../state";
@@ -36,7 +36,7 @@ const ClientStatus = () => {
   };
 
   return (
-    <div className="w-full font-medium">
+    <div className="w-1/2 font-medium pr-8">
       <div className="text-3xl font-bold my-6">
         Client Status
       </div>
@@ -45,7 +45,7 @@ const ClientStatus = () => {
         className={`bg-[#151515] p-2 flex items-center justify-between border-solid rounded-lg border-2 border-[#2ECC71] text-white`}
       >
         {selected ? selected : currentEmployee.customerStatus}
-        <BiChevronDown size={20} className={`${open && "rotate-180"} text-[#2ECC71]`} />
+        <TiArrowSortedDown size={20} className={`${open && "rotate-180"} text-[#2ECC71]`} />
       </div>
       <div
         className={`bg-[#151515]  mt-2 overflow-y-auto ${

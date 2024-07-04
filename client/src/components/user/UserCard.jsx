@@ -52,7 +52,7 @@ const UserCard = ({ name, id, profilePicture }) => {
           setUserList(newUserList);
         }
       } else {
-        console.log("data man");
+        // console.log("data man");
         handleDelete(id);
       }
     } else {

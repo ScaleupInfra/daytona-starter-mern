@@ -14,7 +14,7 @@ const initialData = [
         phone: "+1 234 567 8901",
       },
       customerStatus: "Payment Pending",
-      projectStatus: "Payment Pending",
+      projectStatus: "Delivered",
       profilePicture: "../profilepics/person1.png"
     },
     {
@@ -33,7 +33,7 @@ const initialData = [
         phone: "+1 345 678 9012",
       },
       customerStatus: "Work Agreement Signed",
-      projectStatus: "Work Agreement Signed",
+      projectStatus: "Project Assigned",
       profilePicture: "../profilepics/person2.png"
     },
     {
@@ -52,7 +52,7 @@ const initialData = [
         phone: "+1 567 890 1234",
       },
       customerStatus: "Deliverables Completed",
-      projectStatus: "Deliverables Completed",
+      projectStatus: "In review vendor side",
       profilePicture: "../profilepics/person3.png"
     },
     {
@@ -71,7 +71,7 @@ const initialData = [
         phone: "+1 789 012 3456",
       },
       customerStatus: "Deliverables Assigned",
-      projectStatus: "Deliverables Assigned",
+      projectStatus: "In review client side",
       profilePicture: "../profilepics/person4.png"
     },
     {
@@ -90,7 +90,7 @@ const initialData = [
         phone: "+1 456 789 0123",
       },
       customerStatus: "Payment Recieved",
-      projectStatus: "Payment Recieved",
+      projectStatus: "Project Assigned",
       profilePicture: "../profilepics/person5.png"
     },
     

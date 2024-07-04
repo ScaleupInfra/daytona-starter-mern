@@ -14,7 +14,7 @@ const  UserDesc = () => {
             <div className="text-justify">
                 {currentEmployee.bio}
             </div>
-            <div className="">
+            <div className="flex flex-row">
                 <ClientStatus/>
                 <ProjectStatus/>
             </div>
