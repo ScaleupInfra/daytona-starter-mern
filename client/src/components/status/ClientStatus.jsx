@@ -21,7 +21,7 @@ const ClientStatus = () => {
         onClick={() => setOpen(!open)}
         className={`bg-[#151515] p-2 flex items-center justify-between border-solid rounded-lg border-2 border-[#2ECC71] text-white`}
       >
-        {selected ? selected : currentEmployee.clientStatus}
+        {selected ? selected : currentEmployee.customerStatus}
         <BiChevronDown size={20} className={`${open && "rotate-180"} text-[#2ECC71]`} />
       </div>
       <div
@@ -57,7 +57,7 @@ const ClientStatus = () => {
               onClick={() => {
                 if (clientStatus?.toLowerCase() !== selected?.toLowerCase()) {
                   setSelected(clientStatus);
-                  setCurrentEmployee({...currentEmployee, clientStatus:selected});
+                  setCurrentEmployee({...currentEmployee, customerStatus:selected});
                   setOpen(false);
                   setInputValue("");
                 }

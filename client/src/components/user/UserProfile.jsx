@@ -6,6 +6,7 @@ import { MdPhone} from 'react-icons/md';
 
 const UserProfile = () => {
     const [currentEmployee, setCurrentEmployee] = useRecoilState(currentEmployeeState);
+    // console.log(currentEmployee);
 
     return <div className="bg-[#151515] flex flex-row mx-6 p-6 rounded-2xl border-solid border-l-8 border-l-green-600">
         <div>

@@ -10,11 +10,10 @@ const initialData = [
       },
       bio: "Jane Smith is a dynamic Product Manager with a proven track record of leading cross-functional teams to deliver innovative products. With a background in engineering and a passion for user-centric design, Jane excels in defining product visions and strategies that align with customer needs and business goals. She brings extensive experience from her roles in both startups and established tech companies, where she successfully launched and scaled multiple products. Jane is known for her analytical mindset, strategic thinking, and ability to drive results through collaboration and effective communication.",
       contactDetails:{
-
         email: "jane.smith@example.com",
         phone: "+1 234 567 8901",
       },
-      clientStatus: "Payment Pending",
+      customerStatus: "Payment Pending",
       projectStatus: "Payment Pending",
       profilePicture: "../profilepics/person1.png"
     },
@@ -33,7 +32,7 @@ const initialData = [
         email: "alice.johnson@example.com",
         phone: "+1 345 678 9012",
       },
-      clientStatus: "Work Agreement Signed",
+      customerStatus: "Work Agreement Signed",
       projectStatus: "Work Agreement Signed",
       profilePicture: "../profilepics/person2.png"
     },
@@ -52,7 +51,7 @@ const initialData = [
         email: "sarah.lee@example.com",
         phone: "+1 567 890 1234",
       },
-      clientStatus: "Deliverables Completed",
+      customerStatus: "Deliverables Completed",
       projectStatus: "Deliverables Completed",
       profilePicture: "../profilepics/person3.png"
     },
@@ -71,7 +70,7 @@ const initialData = [
         email: "emily.taylor@example.com",
         phone: "+1 789 012 3456",
       },
-      clientStatus: "Deliverables Assigned",
+      customerStatus: "Deliverables Assigned",
       projectStatus: "Deliverables Assigned",
       profilePicture: "../profilepics/person4.png"
     },
@@ -90,7 +89,7 @@ const initialData = [
         email: "michael.brown@example.com",
         phone: "+1 456 789 0123",
       },
-      clientStatus: "Payment Recieved",
+      customerStatus: "Payment Recieved",
       projectStatus: "Payment Recieved",
       profilePicture: "../profilepics/person5.png"
     },
