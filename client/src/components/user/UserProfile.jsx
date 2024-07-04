@@ -39,7 +39,7 @@ const UserProfile = () => {
                         <div className="ml-1">Github</div>
                     </button>
                 </a>
-                <a href={currentEmployee.profiles.linkedin} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
+                <a href={currentEmployee.profiles.linkedIn} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
                     <button className="flex flex-row items-center border-solid border-[#2ECC71] border-2 px-3 ml-2 py-0.5 rounded-lg">
                         <FaLinkedin/>
                         <div className="ml-1">LinkedIn</div>

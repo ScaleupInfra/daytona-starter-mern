@@ -83,7 +83,7 @@ const UserForm = () => {
               <select
                 id="clientStatus"
                 onChange={(e) => {
-                  setNewUser({ ...newUser, clientStatus: e.target.value });
+                  setNewUser({ ...newUser, customerStatus: e.target.value });
                 }}
                 className="mt-1 w-full bg-[#090909] border-solid border-[#2ECC71] border-[1px] px-3 mr-2 py-0.5 rounded-lg"
                 required
@@ -155,7 +155,7 @@ const UserForm = () => {
               <label className="text-sm font-medium text-white">LinkedIn Link</label>
               <input
                 onChange={(e) => {
-                  setNewUser({ ...newUser, profiles:{...newUser.profiles, linkedin: e.target.value }});
+                  setNewUser({ ...newUser, profiles:{...newUser.profiles, linkedIn: e.target.value }});
                 }}
                 type="url"
                 className="mt-1 w-full bg-[#090909] border-solid border-[#2ECC71] border-[1px] px-3 mr-2 py-0.5 rounded-lg"
@@ -189,9 +189,10 @@ const UserForm = () => {
             <button
               onClick={async () => {
                 const response = await axios.post('http://localhost:8000/api/customers/', newUser);
-                if(response.status === 201){
-                  console.log(response)
-                }
+                console.log(newUser);
+                console.log(response)
+                // if(response.status === 201){
+                // }
                 setShowModal(false);
                 setNewUser({})
               }}
