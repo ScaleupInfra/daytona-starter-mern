@@ -3,7 +3,7 @@ import sample from '../../../src/assets/sample-profile.jpg';
 import { currentEmployeeState, userData } from '../../state';
 import { useRecoilState } from 'recoil';
 import { FaTimes } from 'react-icons/fa';
-import initialData from '../../../data/userDummyData';
+
 import axios from 'axios';
 
 const UserCard = ({ name, id, profilePicture }) => {
@@ -52,11 +52,10 @@ const UserCard = ({ name, id, profilePicture }) => {
           setUserList(newUserList);
         }
       } else {
-        // console.log("data man");
         handleDelete(id);
       }
     } else {
-      alert("Unselect the user first!");
+      alert("User selected for display cannot be deleted");
     }
   };
 

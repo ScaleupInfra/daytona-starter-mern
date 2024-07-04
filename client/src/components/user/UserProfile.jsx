@@ -1,4 +1,4 @@
-import { useRecoilState, useRecoilValue } from "recoil";
+import { useRecoilState} from "recoil";
 import { currentEmployeeState } from "../../state";
 import sample from '../../../src/assets/sample-profile.jpg';
 import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
@@ -6,12 +6,9 @@ import { MdPhone} from 'react-icons/md';
 
 const UserProfile = () => {
     const [currentEmployee, setCurrentEmployee] = useRecoilState(currentEmployeeState);
-    // console.log(currentEmployee);
-
     return <div className="bg-[#151515] flex flex-row mx-6 p-6 rounded-2xl border-solid border-l-8 border-l-green-600">
         <div>
             <img src={currentEmployee.profilePicture ? currentEmployee.profilePicture : sample} alt="No img" className=' w-48 h-48 rounded-full' />
-            {/* {console.log(currentEmployee.profilePicture)} */}
         </div>
         <div className="ml-24">
             <div className={'flex flex-col gap-y-2'}>

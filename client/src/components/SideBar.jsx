@@ -10,12 +10,11 @@ import axios from 'axios';
 const SideBar = () => {
     const [userList, setUserList] = useRecoilState(userData);
     const [filteredData, setFilteredData] = useRecoilState(filteredUserData);
-    const [currentEmployee, setCurrentEmployee] = useRecoilState(currentEmployeeState)
     useEffect(() => {
         const fetchData = async () => {
             try {
                 const response = await axios.get("http://localhost:8000/api/customers/");
-                if (response.status === 200 && Array.isArray(response.data.customers)) {
+                if (response.status === 200) {
                     const updatedData = response.data.customers.map((el) => {
                         return {
                             ...el,
@@ -31,17 +30,13 @@ const SideBar = () => {
                     const concatenatedData = [...prevdata, ...updatedData];
                     setUserList(concatenatedData);
                     setFilteredData(concatenatedData);
-                    setCurrentEmployee(concatenatedData[0]);
-                    console.log(currentEmployee);
-                } else {
-                    console.error('Error: Response data is not an array');
                 }
             }catch (error) {
                 console.error('Error fetching data:', error);
             }
         };
         fetchData();
-    }, [setUserList, setFilteredData]);
+    }, [userList, filteredData]);
 
     return (
         <div className={''}>

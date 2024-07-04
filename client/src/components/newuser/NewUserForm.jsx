@@ -3,12 +3,51 @@ import { useRecoilState } from 'recoil';
 import { showModalState, userData } from '../../state';
 import axios from 'axios';
 
+
 const UserForm = () => {
   const [newUser, setNewUser] = useState({});
   const [userList, setUserList] = useRecoilState(userData);
   const [showModal, setShowModal] = useRecoilState(showModalState);
   const [base64String, setBase64String] = useState({});
-
+  const checkNewUser = (newUser) => {
+    if (!newUser || !newUser.name || newUser.name.length === 0) {
+      alert("Please enter the name");
+      return false;
+    }
+    if (!newUser.designation || newUser.designation.length === 0) {
+      alert("Please enter the designation");
+      return false;
+    }
+    if (!newUser.profiles || !newUser.profiles.github || newUser.profiles.github.length === 0) {
+      alert("Please enter the GitHub profile");
+      return false;
+    }
+    if (!newUser.profiles || !newUser.profiles.linkedIn || newUser.profiles.linkedIn.length === 0) {
+      alert("Please enter the LinkedIn profile");
+      return false;
+    }
+    if (!newUser.bio || newUser.bio.length === 0) {
+      alert("Please enter the bio");
+      return false;
+    }
+    if (!newUser.contactDetails || !newUser.contactDetails.email || newUser.contactDetails.email.length === 0) {
+      alert("Please enter the email");
+      return false;
+    }
+    if (!newUser.contactDetails || !newUser.contactDetails.phone) {
+      alert("Please enter the mobile number");
+      return false;
+    }
+    if (!newUser.customerStatus || newUser.customerStatus.length === 0) {
+      alert("Please enter the client status");
+      return false;
+    }
+    if (!newUser.projectStatus || newUser.projectStatus.length === 0) {
+      alert("Please enter the project status");
+      return false;
+    }
+    return true;
+  };
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (event.target.id === 'modal-backdrop') {
@@ -108,11 +147,10 @@ const UserForm = () => {
                 required
               >
                 <option value="" disabled selected>Select Project Status</option>
-                <option value="Work Agreement Signed">Work Agreement Signed</option>
-                <option value="Deliverables Assigned">Deliverables Assigned</option>
-                <option value="Deliverables Completed">Deliverables Completed</option>
-                <option value="Payment Pending">Payment Pending</option>
-                <option value="Payment Recieved">Payment Recieved</option>
+                <option value="Project Assigned">Project Assigned</option>
+                <option value="In review client side">In review client side</option>
+                <option value="In review vendor side">In review vendor side</option>
+                <option value="Delivered">Delivered</option>
               </select>
             </div>
           </div>
@@ -189,37 +227,40 @@ const UserForm = () => {
           <div className="flex justify-end space-x-4">
             <button
               onClick={async () => {
+                if(checkNewUser(newUser) == false) return;
                 setShowModal(false);
                 const response = await axios.post('http://localhost:8000/api/customers/', newUser);
-                try {
-                  const response = await axios.get("http://localhost:8000/api/customers/");
-                  if (response.status === 200 && Array.isArray(response.data.customers)) {
-                      const updatedData = response.data.customers.map((el) => {
-                          return {
-                              ...el,
-                              contactDetails: {
-                                  ...el.contactDetails,
-                                  phone: el.contactDetails.phone.toString()
-                              }
-                          };
+                console.log(response);
+                if(response.status == 201){
+                  try {
+                    const response2 = await axios.get("http://localhost:8000/api/customers/");
+                    if (response2.status === 200) {
+                      const updatedData = response2.data.customers.map((el) => {
+                        return {
+                          ...el,
+                          contactDetails: {
+                            ...el.contactDetails,
+                            phone: el.contactDetails.phone.toString()
+                          }
+                        };
                       });
                       const prevdata = userList.filter((obj)=>{
-                          return obj._id.length <= 5;
+                        return obj._id.length <= 5;
                       })
                       const concatenatedData = [...prevdata, ...updatedData];
                       setUserList(concatenatedData);
-                  } else {
+                    } else {
                       console.error('Error: Response data is not an array');
+                    }
+                  }catch (error) {
+                    console.error('Error fetching data:', error);
                   }
-              }catch (error) {
-                  console.error('Error fetching data:', error);
-              }
-                console.log(newUser);
-                console.log(response)
-                if(response.status === 201){
-
+                }else{
+                  console.log("error creating new user");
                 }
+                console.log(newUser);
                 setNewUser({})
+                setBase64String({});
               }}
               required
               className="bg-[#151515] text-white px-4 py-2 border-solid border-[#2ECC71] border-[1px] rounded-lg"

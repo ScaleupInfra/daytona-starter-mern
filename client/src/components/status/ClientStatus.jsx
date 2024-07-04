@@ -1,33 +1,25 @@
 import { useState } from "react";
 import { TiArrowSortedDown } from "react-icons/ti";
 import { AiOutlineSearch } from "react-icons/ai";
-import { useRecoilState, useRecoilValue } from "recoil";
+import { useRecoilState } from "recoil";
 import { currentEmployeeState } from "../../state";
 import { FaCheckCircle } from 'react-icons/fa';
 import clientStatusData from '../../../data/clientStatusData'
 import axios from 'axios';
-import ProjectStatus from "./ProjectStatus";
 const ClientStatus = () => {
-  const [currentEmployee, setCurrentEmployee] = useRecoilState(currentEmployeeState)
-  const [inputValue, setInputValue] = useState("");
-  const [selected, setSelected] = useState("");
-  const [open, setOpen] = useState(false);
   const [clientStatusList, setClientStatusList] = useState(clientStatusData);
+  const [inputValue, setInputValue] = useState("");
+  const [open, setOpen] = useState(false);
+  const [currentEmployee, setCurrentEmployee] = useRecoilState(currentEmployeeState)
   
-  const handleStatusChange = async (newStatus) => {
+  const handleClientStatusChange = async (newStatus) => {
     try {
       const updatedEmployee = { ...currentEmployee, customerStatus: newStatus };
-      setCurrentEmployee(updatedEmployee);
-      setSelected(newStatus);
-      setOpen(false);
-      setInputValue("");
-
-      const response = await axios.patch(`http://localhost:8000/api/customers/${currentEmployee._id}`, {
-        customerStatus: newStatus,
-        ProjectStatus: currentEmployee.projectStatus
-      });
-      if(response.status == 200)
+      const response = await axios.patch(`http://localhost:8000/api/customers/${updatedEmployee._id}`, updatedEmployee);
+      if(response.status == 200){
+        setCurrentEmployee(updatedEmployee);
         console.log("Customer status updated successfully");
+      }
       else 
         console.error("Failed to update customer status", error);
     } catch (error) {
@@ -44,7 +36,7 @@ const ClientStatus = () => {
         onClick={() => setOpen(!open)}
         className={`bg-[#151515] p-2 flex items-center justify-between border-solid rounded-lg border-2 border-[#2ECC71] text-white`}
       >
-        {selected ? selected : currentEmployee.customerStatus}
+        {currentEmployee.customerStatus}
         <TiArrowSortedDown size={20} className={`${open && "rotate-180"} text-[#2ECC71]`} />
       </div>
       <div
@@ -69,7 +61,7 @@ const ClientStatus = () => {
               <div key={clientStatus}
               className={` flex flex-row justify-between items-center p-2 text-md font-light hover:font-medium pl-4 py-2 cursor-pointer shadow-thin-border
                 ${
-                  clientStatus?.toLowerCase() === selected?.toLowerCase() &&
+                  clientStatus?.toLowerCase() === currentEmployee.customerStatus.toLowerCase() &&
                   "font-medium"
                 }
                 ${
@@ -78,13 +70,13 @@ const ClientStatus = () => {
                   : "hidden"
                 }`}
               onClick={() => {
-                if (clientStatus?.toLowerCase() !== selected?.toLowerCase()) {
-                  setSelected(clientStatus);
-                  handleStatusChange(clientStatus);
+                if (clientStatus?.toLowerCase() !== currentEmployee.customerStatus.toLowerCase()) {
+                  handleClientStatusChange(clientStatus);
                   setOpen(false);
                   setInputValue("");
                 }
               }}>
+
               <div>
                 {clientStatus}
               </div>
