@@ -4,7 +4,7 @@ import { AiOutlineSearch } from "react-icons/ai";
 import { useRecoilValue } from "recoil";
 import { currentEmployeeState } from "../../state";
 import { FaCheckCircle } from 'react-icons/fa';
-import projectStatusData from "../../../public/data/projectStatusData";
+import projectStatusData from "../../../data/projectStatusData";
 
 const ProjectStatus = () => {
   const [ProjectStatusList, setProjectStatusList] = useState(projectStatusData);

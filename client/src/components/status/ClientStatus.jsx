@@ -4,7 +4,7 @@ import { AiOutlineSearch } from "react-icons/ai";
 import { useRecoilValue } from "recoil";
 import { currentEmployeeState } from "../../state";
 import { FaCheckCircle } from 'react-icons/fa';
-import clientStatusData from '../../../public/data/clientStatusData'
+import clientStatusData from '../../../data/clientStatusData'
 const ClientStatus = () => {
   const currentEmployee = useRecoilValue(currentEmployeeState)
   const [inputValue, setInputValue] = useState("");
