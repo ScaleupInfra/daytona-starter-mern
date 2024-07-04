@@ -21,7 +21,7 @@ const  SideBar = () => {
             } catch (error) {
                 console.error('Error fetching data:', error);
             } finally{
-            console.log(userList);
+            // console.log(userList);
             }
         };
         fetchData();
@@ -41,7 +41,7 @@ const  SideBar = () => {
         <SearchBar/>
         {
             filteredData.map((obj)=>{
-                return <UserCard key={obj.companyUid} name={obj.name} id={obj.companyUid} pic={obj.pic}/>
+                return <UserCard key={obj._id} name={obj.name} id={obj._id} profilePicture={obj.profilePicture}/>
             })
         }
         <NewUser/>

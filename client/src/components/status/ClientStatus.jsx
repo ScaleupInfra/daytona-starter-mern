@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { BiChevronDown } from "react-icons/bi";
 import { AiOutlineSearch } from "react-icons/ai";
-import { useRecoilValue } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import { currentEmployeeState } from "../../state";
 import { FaCheckCircle } from 'react-icons/fa';
 import clientStatusData from '../../../data/clientStatusData'
 const ClientStatus = () => {
-  const currentEmployee = useRecoilValue(currentEmployeeState)
+  const [currentEmployee, setCurrentEmployee] = useRecoilState(currentEmployeeState)
   const [inputValue, setInputValue] = useState("");
   const [selected, setSelected] = useState("");
   const [open, setOpen] = useState(false);
@@ -57,6 +57,7 @@ const ClientStatus = () => {
               onClick={() => {
                 if (clientStatus?.toLowerCase() !== selected?.toLowerCase()) {
                   setSelected(clientStatus);
+                  setCurrentEmployee({...currentEmployee, clientStatus:selected});
                   setOpen(false);
                   setInputValue("");
                 }

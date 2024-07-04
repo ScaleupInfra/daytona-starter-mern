@@ -22,7 +22,7 @@ const UserForm = () => {
     if (base64String.base64) {
       setNewUser({
         ...newUser,
-        pic: base64String.base64,
+        profilePicture: base64String.base64,
       });
     }
   }, [base64String, setNewUser]);
@@ -120,7 +120,7 @@ const UserForm = () => {
               <label className="text-sm font-medium text-white">Email</label>
               <input
                 onChange={(e) => {
-                  setNewUser({ ...newUser, email: e.target.value });
+                  setNewUser({ ...newUser, contactDetails:{...newUser.contactDetails, email: e.target.value }});
                 }}
                 type="email"
                 className="mt-1 w-full bg-[#090909] border-solid border-[#2ECC71] border-[1px] px-3 mr-2 py-0.5 rounded-lg"
@@ -131,7 +131,7 @@ const UserForm = () => {
               <label className="text-sm font-medium text-white">Phone Number</label>
               <input
                 onChange={(e) => {
-                  setNewUser({ ...newUser, mobile: e.target.value });
+                  setNewUser({ ...newUser, contactDetails:{...newUser.contactDetails, phone: e.target.value }});
                 }}
                 type="tel"
                 className="mt-1 w-full bg-[#090909] border-solid border-[#2ECC71] border-[1px] px-3 mr-2 py-0.5 rounded-lg"
@@ -144,7 +144,7 @@ const UserForm = () => {
               <label className="text-sm font-medium text-white">GitHub Link</label>
               <input
                 onChange={(e) => {
-                  setNewUser({ ...newUser, github: e.target.value });
+                  setNewUser({ ...newUser, profiles:{...newUser.profiles, github: e.target.value }});
                 }}
                 type="url"
                 className="mt-1 w-full bg-[#090909] border-solid border-[#2ECC71] border-[1px] px-3 mr-2 py-0.5 rounded-lg"
@@ -155,7 +155,7 @@ const UserForm = () => {
               <label className="text-sm font-medium text-white">LinkedIn Link</label>
               <input
                 onChange={(e) => {
-                  setNewUser({ ...newUser, linkedin: e.target.value });
+                  setNewUser({ ...newUser, profiles:{...newUser.profiles, linkedin: e.target.value }});
                 }}
                 type="url"
                 className="mt-1 w-full bg-[#090909] border-solid border-[#2ECC71] border-[1px] px-3 mr-2 py-0.5 rounded-lg"
@@ -187,24 +187,7 @@ const UserForm = () => {
           <div className="flex justify-end space-x-4">
             <button
               onClick={() => {
-                const data = {
-                  name: newUser.name,
-                  designation: newUser.designation,
-                  bio: newUser.bio,
-                  contactDetails: {
-                    email: newUser.email,
-                    phone: newUser.mobile,
-                  },
-                  profiles: {
-                    linkedin: newUser.linkedin,
-                    github: newUser.github,
-                  },
-                  customerStatus: newUser.clientStatus,
-                  projectStatus: newUser.projectStatus,
-                  profilePicture: newUser.pic,
-                };
-                console.log(newUser);
-                console.log(data);
+                // console.log(newUser);
                 setShowModal(false);
                 setNewUser({})
               }}

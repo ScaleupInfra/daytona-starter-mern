@@ -7,7 +7,7 @@ const  SearchBar = () => {
     const [userList, setUserList] = useRecoilState(userData);
     const [filteredData, setFilteredData] = useRecoilState(filteredUserData);
     const [search, setSearch] = useState("");
-    console.log(userList);
+    // console.log(userList);
     useEffect(()=>{
         if (userList) {
             setFilteredData(
