@@ -30,9 +30,9 @@
         }
     },
 
-    "postCreateCommand": "echo 'package-import-method=clone-or-copy' >> ~/.npmrc && npm install -g npm@10.8.1 && npm install --unsafe-perm && cd client && npm install --unsafe-perm",
+    "postCreateCommand": "echo 'package-import-method=clone-or-copy' >> ~/.npmrc && npm install -g npm@10.8.1 nodemon && npm install --unsafe-perm && cd client && npm install --unsafe-perm",
 
-    "postAttachCommand": "npm run dev & cd client && npm run dev",
+    "postAttachCommand": "npx nodemon index.js & cd client && npm run dev",
 
     "remoteUser": "root"
 }
